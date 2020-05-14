@@ -1,3 +1,7 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-console */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-undef */
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
@@ -32,6 +36,7 @@ export function register(config) {
     }
 
     window.addEventListener('load', () => {
+      // eslint-disable-next-line template-curly-spacing
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
       if (isLocalhost) {

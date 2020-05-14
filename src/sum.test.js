@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const sum = (a, b) => a + b;
 
 test('renders learn react link', () => {
