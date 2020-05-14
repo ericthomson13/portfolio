@@ -30,7 +30,7 @@ const App = () => (
           </span>
         </span>
       </div>
-        <nav className='bg-grey-600 flex w-screen border border-gray-500 items-center justify-around py-2 my-1 rounded'>
+        <nav className='bg-grey-600 flex w-screen border-b border-grey-100 items-center justify-around py-5 my-1'>
           <span className="px-8">
             <Link to='/' className='text-xl'>Home</Link>
           </span>
