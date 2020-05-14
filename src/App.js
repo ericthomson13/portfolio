@@ -21,7 +21,7 @@ const App = () => (
         <span className='font-bold text-2xl pl-3'>Eric Thomson</span>
         {/* figure out how to make one on left and one on right */}
         <span className='sub-title ml-5 mr-10'>Full Stack Software Engineer</span>
-        <span className='social-icons space-between p-2 content-end'>
+        <span className='social-icons space-between p-2 content-end float-right'>
           <span className='p-2'>
             <SocialIcon url='http://linkedin.com/in/eric-david-thomson' />
           </span>
