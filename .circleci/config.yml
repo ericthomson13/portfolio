@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12.0.0
+
+    working_directory: ~/projectGreenfield
+
+    steps:
+     - checkout
+
+     - restore_cache:
+         keys:
+           - v1-dependencies-{{ checksum "package.json" }}
+           - v1-dependencies-
+     - run: npm install
+     - save_cache:
+         paths:
+           - node_modules
+         key: v1-dependencies{{ checksum "package.json" }}
+     - run: npm run test
+
+     - store_artifacts:
+         path: test-reports/
+         destination: tr1
+     - store_test_results:
+         path: test-reports/
