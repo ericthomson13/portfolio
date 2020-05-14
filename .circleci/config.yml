@@ -1,4 +1,4 @@
- version: 2
+version: 2
  jobs:
    build:
      docker:
@@ -25,4 +25,3 @@
           destination: tr1
       - store_test_results:
           path: test-reports/
-          
