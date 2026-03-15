@@ -2,23 +2,55 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12.0.0
+      - image: cimg/node:20.11.1
 
     working_directory: ~/projectGreenfield
 
     steps:
-     - checkout
+     - checkout:
+         command: |
+           git clone https://github.com/ericthomson13/portfolio.git .
 
      - restore_cache:
          keys:
            - v1-dependencies-{{ checksum "package.json" }}
            - v1-dependencies-
      - run: npm install
+     - run: npm run build
      - save_cache:
          paths:
            - node_modules
          key: v1-dependencies{{ checksum "package.json" }}
+
+     - restore_cache:
+         keys:
+           - v1-playwright-deps-{{ checksum "package-lock.json" }}
+           - v1-playwright-deps-
+     - run:
+         name: Install Playwright System Dependencies
+         command: npx playwright install-deps
+     - save_cache:
+         paths:
+           - /opt/rendered-website
+           - /var/lib/apt/lists/*
+         key: v1-playwright-deps-{{ checksum "package-lock.json" }}
+
+     - restore_cache:
+         keys:
+           - v1-playwright-browsers-{{ checksum "package-lock.json" }}
+           - v1-playwright-browsers-
+     - run:
+         name: Install Playwright Browsers
+         command: npx playwright install
+     - save_cache:
+         paths:
+           - ~/.cache/ms-playwright
+         key: v1-playwright-browsers-{{ checksum "package-lock.json" }}
+
      - run: npm run test
+     - run:
+         name: Run E2E Tests
+         command: npm run e2e
 
      - store_artifacts:
          path: test-reports/
