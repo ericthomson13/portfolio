@@ -45,7 +45,6 @@
     "sass": "^1.77.0"
   },
   "jest": {
-    "snapshotSerializers": [],
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js"
