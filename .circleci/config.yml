@@ -7,9 +7,8 @@ jobs:
     working_directory: ~/projectGreenfield
 
     steps:
-     - checkout:
-         command: |
-           git clone https://github.com/ericthomson13/portfolio.git .
+     - checkout
+      git clone https://github.com/ericthomson13/portfolio.git .
 
      - restore_cache:
          keys:
