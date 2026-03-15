@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1",
-    "react-social-icons": "^6.25.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "react-social-icons": "^6.25.0"
   },
   "scripts": {
-  "build:style": "npx tailwindcss -i ./src/styles/index.css -o ./src/styles/tailwind.css --minify",
-  "start": "npm run build:style && react-scripts start",
+    "build:style": "npx tailwindcss -i ./src/styles/index.css -o ./src/styles/tailwind.css --minify",
+    "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint ./src"
@@ -32,21 +33,20 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^4.2.1",
-    "postcss": "^8.5.8",
-    "autoprefixer": "^10.4.27",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.1",
-    "eslint": "^8.57.1",
     "@babel/eslint-parser": "^7.28.6",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "autoprefixer": "^10.4.27",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "postcss": "^8.5.8",
     "prettier": "^3.8.1"
   },
   "jest": {
-  "snapshotSerializers": [],
+    "snapshotSerializers": [],
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js"
