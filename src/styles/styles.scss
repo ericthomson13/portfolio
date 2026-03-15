@@ -1,0 +1,283 @@
+// Color Variables
+$transparent: transparent;
+$current-color: currentColor;
+
+// Black & White
+$black: #000;
+$white: #fff;
+
+// Gray Scale
+$gray-100: #f7fafc;
+$gray-200: #edf2f7;
+$gray-300: #e2e8f0;
+$gray-400: #cbd5e0;
+$gray-500: #a0aec0;
+$gray-600: #718096;
+$gray-700: #4a5568;
+$gray-800: #2d3748;
+$gray-900: #1a202c;
+
+// Red
+$red-100: #fff5f5;
+$red-200: #fed7d7;
+$red-300: #feb2b2;
+$red-400: #fc8181;
+$red-500: #f56565;
+$red-600: #e53e3e;
+$red-700: #c53030;
+$red-800: #9b2c2c;
+$red-900: #742a2a;
+
+// Orange
+$orange-100: #fffaf0;
+$orange-200: #feebc8;
+$orange-300: #fbd38d;
+$orange-400: #f6ad55;
+$orange-500: #ed8936;
+$orange-600: #dd6b20;
+$orange-700: #c05621;
+$orange-800: #9c4221;
+$orange-900: #7b341e;
+
+// Yellow
+$yellow-100: #fffff0;
+$yellow-200: #fefcbf;
+$yellow-300: #faf089;
+$yellow-400: #f6e05e;
+$yellow-500: #ecc94b;
+$yellow-600: #d69e2e;
+$yellow-700: #b7791f;
+$yellow-800: #975a16;
+$yellow-900: #744210;
+
+// Green
+$green-100: #f0fff4;
+$green-200: #c6f6d5;
+$green-300: #9ae6b4;
+$green-400: #68d391;
+$green-500: #48bb78;
+$green-600: #38a169;
+$green-700: #2f855a;
+$green-800: #276749;
+$green-900: #22543d;
+
+// Teal
+$teal-100: #e6fffa;
+$teal-200: #b2f5ea;
+$teal-300: #81e6d9;
+$teal-400: #4fd1c5;
+$teal-500: #38b2ac;
+$teal-600: #319795;
+$teal-700: #2c7a7b;
+$teal-800: #285e61;
+$teal-900: #234e52;
+
+// Blue
+$blue-100: #ebf8ff;
+$blue-200: #bee3f8;
+$blue-300: #90cdf4;
+$blue-400: #63b3ed;
+$blue-500: #4299e1;
+$blue-600: #3182ce;
+$blue-700: #2b6cb0;
+$blue-800: #2c5282;
+$blue-900: #2a4365;
+
+// Indigo
+$indigo-100: #ebf4ff;
+$indigo-200: #c3dafe;
+$indigo-300: #a3bef0;
+$indigo-400: #7c3aed;
+$indigo-500: #6366f1;
+$indigo-600: #4f46e5;
+$indigo-700: #4338ca;
+$indigo-800: #3730a3;
+$indigo-900: #312e81;
+
+// Purple
+$purple-100: #faf5ff;
+$purple-200: #e9d8fd;
+$purple-300: #d6bcfa;
+$purple-400: #b794f6;
+$purple-500: #9f7aea;
+$purple-600: #805ad5;
+$purple-700: #6b46c1;
+$purple-800: #553399;
+$purple-900: #44337a;
+
+// Pink
+$pink-100: #fff5f7;
+$pink-200: #fed7e2;
+$pink-300: #fbcfe8;
+$pink-400: #f687b3;
+$pink-500: #ed64a6;
+$pink-600: #d53f8c;
+$pink-700: #b83280;
+$pink-800: #97266d;
+$pink-900: #702459;
+
+// Responsive breakpoints (matching tailwind)
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Mixins for responsive design
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Utility classes for layout
+.w-screen {
+  width: 100vw;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.border-b {
+  border-bottom: 1px solid;
+}
+
+.bg-black {
+  background-color: $black;
+}
+
+.bg-grey-600 {
+  background-color: $gray-600;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.border-grey-100 {
+  border-color: $gray-100;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-between {
+  align-content: space-between;
+}
+
+.content-end {
+  align-content: flex-end;
+}
+
+.float-right {
+  float: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

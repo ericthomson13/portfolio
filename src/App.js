@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link
 } from "react-router-dom";
@@ -51,26 +51,14 @@ const App = () => (
             <Link to='/contact-me' className='text-xl'>Contact Me</Link>
           </span>
         </nav>
-        <Switch>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/projects'>
-            <Projects />
-          </Route>
-          <Route path='/blog'>
-            <Blog />
-          </Route>
-          <Route path='/photography'>
-            <Photography />
-          </Route>
-          <Route path='/contact-me'>
-            <ContactMe />
-          </Route>
-          <Route path='/'>
-            <Home />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/photography" element={<Photography />} />
+          <Route path="/contact-me" element={<ContactMe />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </div>
     </Router>
 );
