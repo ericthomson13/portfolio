@@ -24,18 +24,21 @@ test.describe('Portfolio Navigation', () => {
   });
 
   test('should navigate to Blog page', async ({ page }) => {
+    await page.locator('text=Blog').scrollIntoViewIfNeeded();
     await page.click('text=Blog');
     await page.waitForURL('**/blog');
     expect(page.url()).toContain('/blog');
   });
 
   test('should navigate to Photography page', async ({ page }) => {
+    await page.locator('text=Photography').scrollIntoViewIfNeeded();
     await page.click('text=Photography');
     await page.waitForURL('**/photography');
     expect(page.url()).toContain('/photography');
   });
 
   test('should navigate to Contact Me page', async ({ page }) => {
+    await page.locator('text=Contact Me').scrollIntoViewIfNeeded();
     await page.click('text=Contact Me');
     await page.waitForURL('**/contact-me');
     expect(page.url()).toContain('/contact-me');
