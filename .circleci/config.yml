@@ -44,6 +44,10 @@ jobs:
           name: Run Unit Tests
           command: npm test -- --coverage --watchAll=false
       - run:
+          name: Start Application
+          command: npm start
+          background: true
+      - run:
           name: Wait for Application to Start
           command: |
             for i in {1..30}; do
