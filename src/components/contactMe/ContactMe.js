@@ -1,8 +1,6 @@
-import React, { useState, } from 'react';
+import React from 'react';
 
 const ContactMe = () => {
-  const [name, setName] = useState();
-
   return (
     <div>
       Contact Me

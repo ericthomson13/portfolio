@@ -1,3 +1,7 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import App from './App';
 // Mocks are now in __mocks__
 // Mock the individual components since they are simple
 jest.mock('./components/home/Home', () => () => 'Home Page');
@@ -6,11 +10,6 @@ jest.mock('./components/projects/Projects', () => () => 'Projects Page');
 jest.mock('./components/blog/Blog', () => () => 'Blog Page');
 jest.mock('./components/photography/Photography', () => () => 'Photography Page');
 jest.mock('./components/contactMe/ContactMe', () => () => 'Contact Me');
-
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import App from './App';
 
 describe('App Component', () => {
   test('renders header with name and title', () => {
