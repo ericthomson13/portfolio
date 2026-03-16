@@ -1,27 +1,75 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:12.0.0
-
-    working_directory: ~/projectGreenfield
-
+      - image: cimg/node:20.11.1
+    working_directory: ~/portfolio
     steps:
-     - checkout
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      - run: npm cache clean --force
+      - run: npm ci
+      - run: npm run build
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - restore_cache:
+          keys:
+            - v1-playwright-deps-{{ checksum "package-lock.json" }}
+            - v1-playwright-deps-
+      - run:
+          name: Install Playwright System Dependencies
+          command: npx playwright install-deps
+      - save_cache:
+          paths:
+            - /opt/rendered-website
+            - /var/lib/apt/lists/*
+          key: v1-playwright-deps-{{ checksum "package-lock.json" }}
+      - restore_cache:
+          keys:
+            - v1-playwright-browsers-{{ checksum "package-lock.json" }}
+            - v1-playwright-browsers-
+      - run:
+          name: Install Playwright Browsers
+          command: npx playwright install
+      - save_cache:
+          paths:
+            - ~/.cache/ms-playwright
+          key: v1-playwright-browsers-{{ checksum "package-lock.json" }}
+      - run:
+          name: Run Unit Tests
+          command: npm test -- --coverage --watchAll=false
+      - run:
+          name: Start Application
+          command: npm start
+          background: true
+      - run:
+          name: Wait for Application to Start
+          command: |
+            for i in {1..30}; do
+              if curl -f http://localhost:3000 > /dev/null 2>&1; then
+                echo "Application is ready"
+                break
+              fi
+              echo "Waiting for application to start... ($i/30)"
+              sleep 2
+            done
+            if [ $i -eq 30 ]; then
+              echo "Application failed to start"
+              exit 1
+            fi
+      - run:
+          name: Run E2E Tests
+          command: npm run e2e
+      - store_test_results:
+          path: test-reports/
 
-     - restore_cache:
-         keys:
-           - v1-dependencies-{{ checksum "package.json" }}
-           - v1-dependencies-
-     - run: npm install
-     - save_cache:
-         paths:
-           - node_modules
-         key: v1-dependencies{{ checksum "package.json" }}
-     - run: npm run test
-
-     - store_artifacts:
-         path: test-reports/
-         destination: tr1
-     - store_test_results:
-         path: test-reports/
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
