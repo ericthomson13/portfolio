@@ -8,14 +8,15 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
-      - run: npm install
+      - run: npm cache clean --force
+      - run: npm ci
       - run: npm run build
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
       - restore_cache:
           keys:
             - v1-playwright-deps-{{ checksum "package-lock.json" }}
