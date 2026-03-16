@@ -48,6 +48,12 @@ jobs:
           command: npm start
           background: true
       - run:
+          name: Stop Application
+          command: pkill -f "react-scripts start" || true
+          when: always
+          path: playwright-report/
+          destination: playwright-report
+      - run:
           name: Wait for Application to Start
           command: |
             for i in {1..30}; do
@@ -65,12 +71,6 @@ jobs:
       - run:
           name: Run E2E Tests
           command: npm run e2e
-      - run:
-          name: Stop Application
-          command: pkill -f "react-scripts start" || true
-          when: always
-          path: playwright-report/
-          destination: playwright-report
       - store_test_results:
           path: test-reports/
 
